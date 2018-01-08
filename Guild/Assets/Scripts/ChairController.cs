@@ -10,7 +10,7 @@ public class ChairController : Singleton<ChairController> {
 	public int maxt = 10;
 	public List<GameObject> adventurerList = new List<GameObject> ();
 	private List<Chair> chairs;
-	private float currentSpawnTime;
+	private float currentSpawnTime = 0;
 	private float chairTimer;
 
 	public void Awake() {
@@ -50,7 +50,7 @@ public class ChairController : Singleton<ChairController> {
 		chair.BecomeSatIn();
 
 		int randomNum = Random.Range (0, totalNumberOfAdventurers);
-		Object customers = adventurerList [randomNum];
+		GameObject customers = adventurerList [randomNum];
 		GameObject g = Instantiate (customers, chair.gameObject.transform.position, Quaternion.identity);
 		Adventurers adventurer = g.GetComponent<Adventurers> ();
 		adventurer.GiveChair (chair);
@@ -59,5 +59,6 @@ public class ChairController : Singleton<ChairController> {
 	private void SetSpawnTime() {
 		chairTimer = 0f;
 		currentSpawnTime = Random.Range(mint, maxt);
+		Debug.Log (currentSpawnTime);
 	}
 }

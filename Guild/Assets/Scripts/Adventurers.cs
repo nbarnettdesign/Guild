@@ -7,10 +7,17 @@ public class Adventurers : MonoBehaviour {
 	public GameObject adventurer;
 	public GameObject seat;
 	public Chair chair;
+	public int strength;
+	public int skill;
+	public int will;
 
 	// Use this for initialization
 	void Start () {
 		adventurer = gameObject;
+		strength = Random.Range (1, 5);
+		skill = Random.Range (1, 5);
+		will = Random.Range (1, 5);
+
 	}
 	
 	// Update is called once per frame
@@ -21,7 +28,7 @@ public class Adventurers : MonoBehaviour {
 
 
 	void OnMouseDown (){
-		//Chair.BecomeUnSatIn();
+		chair.BecomeUnsatIn();
 		Destroy (adventurer);
 //		GetComponent ();
 		}
